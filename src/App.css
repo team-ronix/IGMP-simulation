@@ -1,38 +1,351 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
+.packet {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  z-index: 50;
   pointer-events: none;
+  transform: translate(-50%, -50%);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
+/* 1. SOURCES TO ROUTER (80px -> 250px) */
+@keyframes source0-router {
   from {
-    transform: rotate(0deg);
+    top: 80px;
+    left: 20%;
   }
+
   to {
-    transform: rotate(360deg);
+    top: 250px;
+    left: 50%;
   }
+}
+
+@keyframes source1-router {
+  from {
+    top: 80px;
+    left: 50%;
+  }
+
+  to {
+    top: 250px;
+    left: 50%;
+  }
+}
+
+@keyframes source2-router {
+  from {
+    top: 80px;
+    left: 80%;
+  }
+
+  to {
+    top: 250px;
+    left: 50%;
+  }
+}
+
+/* 2. ROUTER TO SWITCHES (250px -> 450px) */
+@keyframes router-switch0 {
+  from {
+    top: 250px;
+    left: 50%;
+  }
+
+  to {
+    top: 450px;
+    left: 20%;
+  }
+}
+
+@keyframes router-switch1 {
+  from {
+    top: 250px;
+    left: 50%;
+  }
+
+  to {
+    top: 450px;
+    left: 50%;
+  }
+}
+
+@keyframes router-switch2 {
+  from {
+    top: 250px;
+    left: 50%;
+  }
+
+  to {
+    top: 450px;
+    left: 80%;
+  }
+}
+
+/* 3. SWITCHES TO ROUTER (Reverse: 450px -> 250px) */
+@keyframes switch0-router {
+  from {
+    top: 450px;
+    left: 20%;
+  }
+
+  to {
+    top: 250px;
+    left: 50%;
+  }
+}
+
+@keyframes switch1-router {
+  from {
+    top: 450px;
+    left: 50%;
+  }
+
+  to {
+    top: 250px;
+    left: 50%;
+  }
+}
+
+@keyframes switch2-router {
+  from {
+    top: 450px;
+    left: 80%;
+  }
+
+  to {
+    top: 250px;
+    left: 50%;
+  }
+}
+
+/* 4. SWITCH TO HOSTS (450px -> 700px) */
+@keyframes switch0-host0 {
+  from {
+    top: 450px;
+    left: 20%;
+  }
+
+  to {
+    top: 700px;
+    left: 12%;
+  }
+}
+
+@keyframes switch0-host1 {
+  from {
+    top: 450px;
+    left: 20%;
+  }
+
+  to {
+    top: 700px;
+    left: 28%;
+  }
+}
+
+@keyframes switch1-host2 {
+  from {
+    top: 450px;
+    left: 50%;
+  }
+
+  to {
+    top: 700px;
+    left: 42%;
+  }
+}
+
+@keyframes switch1-host3 {
+  from {
+    top: 450px;
+    left: 50%;
+  }
+
+  to {
+    top: 700px;
+    left: 58%;
+  }
+}
+
+@keyframes switch2-host4 {
+  from {
+    top: 450px;
+    left: 80%;
+  }
+
+  to {
+    top: 700px;
+    left: 72%;
+  }
+}
+
+@keyframes switch2-host5 {
+  from {
+    top: 450px;
+    left: 80%;
+  }
+
+  to {
+    top: 700px;
+    left: 88%;
+  }
+}
+
+/* 5. HOST TO SWITCH (Reverse: 700px -> 450px) */
+@keyframes host0-switch0 {
+  from {
+    top: 700px;
+    left: 12%;
+  }
+
+  to {
+    top: 450px;
+    left: 20%;
+  }
+}
+
+@keyframes host1-switch0 {
+  from {
+    top: 700px;
+    left: 28%;
+  }
+
+  to {
+    top: 450px;
+    left: 20%;
+  }
+}
+
+@keyframes host2-switch1 {
+  from {
+    top: 700px;
+    left: 42%;
+  }
+
+  to {
+    top: 450px;
+    left: 50%;
+  }
+}
+
+@keyframes host3-switch1 {
+  from {
+    top: 700px;
+    left: 58%;
+  }
+
+  to {
+    top: 450px;
+    left: 50%;
+  }
+}
+
+@keyframes host4-switch2 {
+  from {
+    top: 700px;
+    left: 72%;
+  }
+
+  to {
+    top: 450px;
+    left: 80%;
+  }
+}
+
+@keyframes host5-switch2 {
+  from {
+    top: 700px;
+    left: 88%;
+  }
+
+  to {
+    top: 450px;
+    left: 80%;
+  }
+}
+
+/* Helpers */
+.animate-source0-router {
+  animation: source0-router 1s linear forwards;
+}
+
+.animate-source1-router {
+  animation: source1-router 1s linear forwards;
+}
+
+.animate-source2-router {
+  animation: source2-router 1s linear forwards;
+}
+
+.animate-router-switch0 {
+  animation: router-switch0 1s linear forwards;
+}
+
+.animate-router-switch1 {
+  animation: router-switch1 1s linear forwards;
+}
+
+.animate-router-switch2 {
+  animation: router-switch2 1s linear forwards;
+}
+
+.animate-switch0-router {
+  animation: switch0-router 1s linear forwards;
+}
+
+.animate-switch1-router {
+  animation: switch1-router 1s linear forwards;
+}
+
+.animate-switch2-router {
+  animation: switch2-router 1s linear forwards;
+}
+
+.animate-switch0-host0 {
+  animation: switch0-host0 1s linear forwards;
+}
+
+.animate-switch0-host1 {
+  animation: switch0-host1 1s linear forwards;
+}
+
+.animate-switch1-host2 {
+  animation: switch1-host2 1s linear forwards;
+}
+
+.animate-switch1-host3 {
+  animation: switch1-host3 1s linear forwards;
+}
+
+.animate-switch2-host4 {
+  animation: switch2-host4 1s linear forwards;
+}
+
+.animate-switch2-host5 {
+  animation: switch2-host5 1s linear forwards;
+}
+
+.animate-host0-switch0 {
+  animation: host0-switch0 1s linear forwards;
+}
+
+.animate-host1-switch0 {
+  animation: host1-switch0 1s linear forwards;
+}
+
+.animate-host2-switch1 {
+  animation: host2-switch1 1s linear forwards;
+}
+
+.animate-host3-switch1 {
+  animation: host3-switch1 1s linear forwards;
+}
+
+.animate-host4-switch2 {
+  animation: host4-switch2 1s linear forwards;
+}
+
+.animate-host5-switch2 {
+  animation: host5-switch2 1s linear forwards;
 }

@@ -1,10 +1,39 @@
-# Getting Started with Create React App
+# IGMP Visualization with Source-Specific Multicast (SSM)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+An interactive visualization tool for understanding **Internet Group Management Protocol (IGMP)** with support for **IGMPv3 Source-Specific Multicast (SSM)**.
+
+## Features
+
+### 🎯 Multi-Level Network Topology
+- **3 Multicast Sources** - Multiple streaming sources with color-coded packets
+- **Multicast Router** - Central router managing IGMP queries and responses
+- **Layer 2 Switch** - With optional IGMP Snooping capability
+- **5 Hosts** - Each can independently join/leave multicast groups
+
+### ⚡ Source-Specific Multicast (IGMPv3)
+- **SSM Mode** - Hosts can filter which sources they receive from
+- **Any-Source Multicast (ASM)** - Traditional mode receiving from all sources
+- **Fine-Grained Control** - Each host can select specific sources when in SSM mode
+- **Real-time Filtering** - Watch packets get filtered based on SSM configuration
+
+### 📡 IGMP Protocol Features
+- **General Queries** - Router queries for active group members
+- **Membership Reports** - Hosts respond with join messages
+- **Leave Messages** - Explicit leave group notifications
+- **IGMP Snooping** - Switch learns multicast group membership to optimize forwarding
+
+### 🎨 Visual Packet Animation
+- Color-coded packets for different sources (Blue, Green, Orange)
+- Real-time packet flow visualization
+- Animated paths showing network topology
 
 ## Available Scripts
 
 In the project directory, you can run:
+
+### `npm install`
+
+Install all dependencies before first run.
 
 ### `npm start`
 
@@ -14,57 +43,36 @@ Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 The page will reload when you make changes.\
 You may also see any lint errors in the console.
 
-### `npm test`
+## How to Use the Simulator
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### 1. Source Controls
+- Click on any source (A, B, or C) to start/stop streaming
+- Active sources will show colored indicators and begin sending packets
+- Each source has a unique color for easy identification
 
-### `npm run build`
+### 2. Host Configuration
+- Click any host to select it and open the configuration panel
+- **Join/Leave Group** - Subscribe or unsubscribe from the multicast group
+- **Enable SSM Mode** - Activate Source-Specific Multicast (IGMPv3)
+- **Select Sources** - When SSM is enabled, choose which sources to receive from
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### 3. Router Actions
+- **Send General Query** - Router asks all hosts about their group membership
+- Hosts will respond if they're members of the multicast group
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### 4. Switch Configuration
+- **IGMP Snooping Toggle** - Enable/disable intelligent multicast forwarding
+  - **ON**: Switch only forwards to subscribed ports (efficient)
+  - **OFF**: Switch floods multicast to all ports (broadcast behavior)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Key Concepts
 
-### `npm run eject`
+### Source-Specific Multicast (SSM)
+IGMPv3 introduces the ability for hosts to specify which sources they want to receive from, providing better security and reduced bandwidth usage.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### Any-Source Multicast (ASM)
+Traditional IGMP where hosts receive from any source sending to the group.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### IGMP Snooping
+A Layer 2 optimization where switches learn which ports have interested hosts by snooping on IGMP messages.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
